@@ -161,6 +161,8 @@ class File implements \ArrayAccess, \IteratorAggregate, \Countable
         $this->storage = $storage;
     }
 
+    protected $beforeValidation;
+
     /********************************************************************************
      * Callbacks
      *******************************************************************************/
@@ -182,6 +184,8 @@ class File implements \ArrayAccess, \IteratorAggregate, \Countable
         return $this;
     }
 
+    protected $afterValidation;
+
     /**
      * Set `afterValidation` callable
      *
@@ -199,6 +203,8 @@ class File implements \ArrayAccess, \IteratorAggregate, \Countable
         return $this;
     }
 
+    protected $beforeUpload;
+
     /**
      * Set `beforeUpload` callable
      *
@@ -215,6 +221,8 @@ class File implements \ArrayAccess, \IteratorAggregate, \Countable
 
         return $this;
     }
+
+    protected $afterUpload;
 
     /**
      * Set `afterUpload` callable
@@ -256,7 +264,7 @@ class File implements \ArrayAccess, \IteratorAggregate, \Countable
     /**
      * Add file validations
      *
-     * @param  array[\Upload\ValidationInterface] $validations
+     * @param  array<\Upload\ValidationInterface> $validations
      * @return \Upload\File                       Self
      */
     public function addValidations(array $validations)
